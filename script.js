@@ -75,17 +75,24 @@ $("q").addEventListener("input",renderList);
 $("q").addEventListener("keydown",e=>{
   if(e.key==="Enter"){const f=$("list").querySelector(".so");if(f)f.click()}
 });
-$("share").onclick=async()=>{
+function shareText(){
   const lines=guesses.map(i=>compare(SG[i]).map(c=>c.ok?"🟩":"🟥").join(""));
-  const t="BOYNEXTDOOR Songdle #"+puzzle+" "+(state()==="win"?guesses.length:"X")+"/"+MAX+"\n"+lines.join("\n");
-  try{await navigator.clipboard.writeText(t);$("share").textContent="Copied ✓"}catch(e){$("share").textContent="Couldn’t copy"}
+  return "BOYNEXTDOOR Songdle #"+puzzle+" "+(state()==="win"?guesses.length:"X")+"/"+MAX+"\n"+lines.join("\n");
+}
+$("share").onclick=async()=>{
+  try{await navigator.clipboard.writeText(shareText());$("share").textContent="Copied ✓"}
+  catch(e){$("share").textContent="Couldn’t copy"}
+};
+$("tweet").onclick=()=>{
+  const url="https://x.com/intent/post?text="+encodeURIComponent(shareText()+"\n"+location.href)+"&hashtags=BOYNEXTDOOR,ONEDOOR";
+  window.open(url,"_blank","noopener");
 };
 function tick(){
   const n=new Date(),m=new Date(n.getFullYear(),n.getMonth(),n.getDate()+1),s=Math.max(0,Math.floor((m-n)/1000));
   const p=x=>String(x).padStart(2,"0");
   $("cd").textContent=p(Math.floor(s/3600))+":"+p(Math.floor(s%3600/60))+":"+p(s%60);
   if(s===0&&dayNum!==Math.floor(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())/864e5))location.reload();
-}
+};
 $("sub").textContent="Guess the BOYNEXTDOOR song of the day · Puzzle #"+puzzle+" · "+MAX+" guesses";
 guesses.forEach(i=>addRow(SG[i],false));
 update();tick();setInterval(tick,1000);
