@@ -21,10 +21,12 @@ const order=(()=>{const r=rng(20261027),a=SG.map(s=>s.id);for(let i=a.length-1;i
 const now=new Date(), dayNum=Math.floor(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())/864e5);
 const puzzle=Math.max(1,dayNum-LAUNCH+1);
 const ans=SG[order[((dayNum-LAUNCH)%SG.length+SG.length)%SG.length]];
-const KEY="bnd-songdle:"+dayNum;
+const KEY="bnd-songdle:v2:"+dayNum;
 let guesses=[];
 
-try{const v=JSON.parse(localStorage.getItem(KEY)||"null");if(v&&Array.isArray(v.g))guesses=v.g.filter(i=>SG[i])}catch(e){}
+try{const v=JSON.parse(localStorage.getItem(KEY)||"null");
+  if(v&&Array.isArray(v.g))guesses=v.g.map(t=>SG.find(s=>s.t===t)).filter(Boolean).map(s=>s.id)}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({g:guesses.map(i=>SG[i].t)}))}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify({g:guesses}))}catch(e){}}
 const SK="bnd-songdle-stats";
 let stats={streak:0,max:0,last:-1};
@@ -76,21 +78,24 @@ function guess(id){
   setTimeout(update,s==="play"?0:1900);
   if(s==="play")update();
 }
-}
+
 function update(){
   const s=state();
+  if(s!=="play")recordResult(s);
   $("status").textContent=s==="play"?"Guess "+guesses.length+" of "+MAX:"";
   renderList();
-  $("streak").textContent=curStreak();
-  $("best").textContent=stats.max;
+  const st=$("streak"),bs=$("best");
+  if(st)st.textContent=curStreak();
+  if(bs)bs.textContent=stats.max;
   if(s==="play"){$("search").style.display="block";$("end").style.display="none";return}
   $("search").style.display="none";$("end").style.display="block";
   $("eh").textContent=s==="win"?"🎉 Correct! Solved in "+guesses.length+"/"+MAX:"Game over";
   $("ep").textContent="Today’s song is "+ans.t+" (album: "+AL[ans.a][0]+")";
 }
+
 $("q").addEventListener("input",renderList);
 $("q").addEventListener("keydown",e=>{
-  if(e.key==="Enter"){const f=$("list").querySelector(".so");if(f)f.click()}
+  if(e.key==="Enter"||e.keyCode===13){e.preventDefault();const f=$("list").querySelector(".so");if(f)f.click()}
 });
 function shareText(){
   const lines=guesses.map(i=>compare(SG[i]).map(c=>c.ok?"🟩":"🟥").join(""));
