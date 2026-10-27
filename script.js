@@ -10,7 +10,7 @@ const SG=[
  ["06070",6,1,1],["VIRAL",6,2,1],["ddok ddok ddok",6,3,1],["ADIOS!",6,4,1],["Upside Down",6,5,1],["DIVE",6,6,1],["Forever You",6,7,1],["I Wonder",6,8,1],
  ["GOOD DAY",7,4,0],
  ["Count to Love (Japanese ver.)",8,1,1],
- ["Animal",9,1,1],["Cliche",9,2,1],["Count to Love (Korean ver.)",9,11,1],["400 Years",9,12,1],["Boom Boom Boom (Korean ver.)",9,13,0]
+ ["Animal",9,1,1],["Cliche",9,2,1],["Count to Love (Korean ver.)",9,11,1],["400 Years",9,12,1],["Boom Boom Boom",9,13,0]
 ].map((s,i)=>({id:i,t:s[0],a:s[1],n:s[2],c:s[3]}));
 const MAX=5, LAUNCH=Date.UTC(2026,9,27)/864e5;
 const $=id=>document.getElementById(id);
