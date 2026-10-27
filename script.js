@@ -1,5 +1,5 @@
 // [album, release year]
-const AL=[["WHO!","2023-05-30"],["WHY..","2023-09-04"],["HOW?","2024-04-15"],["19.99","2024-09-09"],["No Genre","2025-05-13"],["The Action","2025-10-20"],["HOME","2026-06-08"]];
+const AL=[["WHO!","2023-05-30"],["WHY..","2023-09-04"],["HOW?","2024-04-15"],["19.99","2024-09-09"],["No Genre","2025-05-13"],["The Action","2025-10-20"],["HOME","2026-06-08"],["AND,","2024-07-10"],["BOYLIFE","2025-08-18"],["HOME (Deluxe)","2026-09-28"]];
 // [song name, index album, track, member co writing(1/0)]
 const SG=[
  ["But I Like You",0,1,1],["One and Only",0,2,0],["Serenade",0,3,1],
@@ -9,6 +9,9 @@ const SG=[
  ["123-78",4,1,1],["I Feel Good",4,2,1],["Step By Step",4,3,1],["Is That True?",4,4,1],["Next Mistake",4,5,1],["IF I SAY, I LOVE YOU",4,6,1],
  ["Live In Paris",5,1,1],["Hollywood Action",5,2,1],["JAM!",5,3,1],["Bathroom",5,4,1],["As Time Goes By",5,5,1],
  ["06070",6,1,1],["VIRAL",6,2,1],["ddok ddok ddok",6,3,1],["ADIOS!",6,4,1],["Upside Down",6,5,1],["DIVE",6,6,1],["Forever You",6,7,1],["I Wonder",6,8,1]
+ ["GOOD DAY",7,4,0],
+ ["Count to Love (Japanese ver.)",8,1,1],
+ ["Animal",9,1,1],["Cliche",9,2,1],["Count to Love (Korean ver.)",9,11,1],["400 Years",9,12,1],["Boom Boom Boom",9,13,0]
 ].map((s,i)=>({id:i,t:s[0],a:s[1],n:s[2],c:s[3]}));
 const MAX=5, LAUNCH=Date.UTC(2026,9,27)/864e5;
 const $=id=>document.getElementById(id);
