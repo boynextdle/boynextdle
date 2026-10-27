@@ -37,3 +37,5 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-grad
 .btn.x{background:#000;border:1px solid #555}
 .btn+.btn{margin-left:8px}
 .btn.x{background:#000;border:1px solid #555}
+.stats{display:flex;justify-content:center;gap:18px;font-size:14px;color:var(--mut);margin-bottom:12px}
+.stats b{color:var(--fg);font-size:16px;margin-left:4px;font-variant-numeric:tabular-nums}
