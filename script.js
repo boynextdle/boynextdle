@@ -84,7 +84,7 @@ $("share").onclick=async()=>{
   catch(e){$("share").textContent="Couldn’t copy"}
 };
 $("tweet").onclick=()=>{
-  const url="https://x.com/intent/post?text="+encodeURIComponent(shareText()+"\n"+location.href)+"&hashtags=BOYNEXTDOOR,ONEDOOR";
+  const url="https://x.com/intent/post?text="+encodeURIComponent(shareText()+"\n"+location.href)+"&hashtags=BOYNEXTDOOR";
   window.open(url,"_blank","noopener");
 };
 function tick(){
