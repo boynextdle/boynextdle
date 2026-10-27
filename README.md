@@ -1,16 +1,37 @@
-## Hi there 👋
-
-<!--
-**boynextdle/boynextdle** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+:root{--bg:#f6f4ef;--fg:#16161a;--mut:#6b6b73;--card:#ffffff;--line:#dcd8cd;--ok:#2e9e5b;--bad:#d64545;--acc:#ff4d2e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111114;--fg:#f3f1ec;--mut:#9a9aa3;--card:#1c1c21;--line:#33333b}}
+:root[data-theme="dark"]{--bg:#111114;--fg:#f3f1ec;--mut:#9a9aa3;--card:#1c1c21;--line:#33333b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+main{width:100%;max-width:640px;padding:16px 12px 40px}
+h1{margin:0;text-align:center;font-size:clamp(22px,6vw,30px);font-weight:800;letter-spacing:.03em}
+h1 span{color:var(--acc)}
+.sub{text-align:center;color:var(--mut);font-size:14px;margin:6px 0 14px}
+.legend{display:flex;justify-content:center;gap:14px;font-size:13px;color:var(--mut);margin-bottom:12px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+#search{position:relative}
+#q{width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--fg);font:inherit;font-size:16px}
+#list{margin-top:6px;max-height:250px;overflow-y:auto;border:1.5px solid var(--line);border-radius:10px;background:var(--card)}
+.ah{position:sticky;top:0;background:var(--card);padding:6px 12px;font-size:12px;font-weight:700;color:var(--mut);border-bottom:1px solid var(--line);letter-spacing:.04em}
+.so{display:flex;justify-content:space-between;width:100%;padding:10px 12px;border:0;background:none;color:var(--fg);font:inherit;font-size:15px;text-align:left;cursor:pointer;border-bottom:1px solid var(--line)}
+.so:hover{background:var(--line)}
+.so small{color:var(--mut)}
+.none{padding:14px;color:var(--mut);font-size:14px;text-align:center}
+#status{text-align:center;font-size:14px;color:var(--mut);margin:14px 0 8px;min-height:20px}
+.wrap{overflow-x:auto}
+.gr{display:grid;grid-template-columns:1.7fr 1.2fr .8fr 1fr .9fr .7fr;gap:4px;margin-bottom:4px;min-width:420px}
+.hd div{font-size:11px;font-weight:700;color:var(--mut);text-align:center;padding:2px}
+.c{min-height:54px;padding:4px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12.5px;font-weight:700;color:#fff;border-radius:7px;line-height:1.2;word-break:break-word;opacity:0;animation:pop .45s forwards}
+.c.ok{background:var(--ok)}.c.bad{background:var(--bad)}
+@keyframes pop{from{opacity:0;transform:rotateX(90deg)}to{opacity:1;transform:none}}
+#end{display:none;text-align:center;margin-top:16px;padding:16px;border:1.5px solid var(--line);border-radius:12px;background:var(--card)}
+#end h2{margin:0 0 6px;font-size:20px}
+#end p{margin:4px 0;color:var(--mut);font-size:14px}
+.btn{margin-top:10px;padding:10px 22px;border:0;border-radius:999px;background:var(--acc);color:#fff;font:700 15px inherit;cursor:pointer}
+#cd{font-variant-numeric:tabular-nums;font-weight:700;color:var(--fg)}
+footer{margin-top:22px;text-align:center;color:var(--mut);font-size:12px}
+:root,:root:not([data-theme="light"]),:root[data-theme="dark"]{--bg:#0b0b0e;--fg:#f3f1ec;--mut:#b8b8c2;--card:rgba(24,24,29,.9);--line:#3a3a43;color-scheme:dark}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(8,8,12,.55),rgba(8,8,12,.82)),url("bg.jpg") center 35%/cover no-repeat}
+.btn+.btn{margin-left:8px}
+.btn.x{background:#000;border:1px solid #555}
