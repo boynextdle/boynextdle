@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BOYNEXTDOOR Songdle – Daily Song Guess</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>BOY<span>NEXT</span>DOOR SONGDLE</h1>
+  <p class="sub" id="sub"></p>
+  <div class="legend"><span><i style="background:var(--ok)"></i>Correct</span><span><i style="background:var(--bad)"></i>Wrong</span></div>
+  <div id="search">
+    <input id="q" type="text" placeholder="Type to search or pick a song…" autocomplete="off">
+    <div id="list"></div>
+  </div>
+  <div id="status"></div>
+  <div class="wrap">
+    <div class="gr hd"><div>Song</div><div>Album</div><div>Track #</div><div>Member co-write</div><div>Year</div><div>Year hint</div></div>
+    <div id="rows"></div>
+  </div>
+  <div id="end">
+    <h2 id="eh"></h2>
+    <p id="ep"></p>
+    <button class="btn" id="share">Copy result</button>
+    <p style="margin-top:12px">Next song in <span id="cd"></span></p>
+  </div>
+  <footer>Year hint: = same year · ↑ = the answer’s album came out in a later year · ↓ = an earlier year · The day resets at midnight in your local time</footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
