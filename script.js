@@ -26,6 +26,17 @@ let guesses=[];
 
 try{const v=JSON.parse(localStorage.getItem(KEY)||"null");if(v&&Array.isArray(v.g))guesses=v.g.filter(i=>SG[i])}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify({g:guesses}))}catch(e){}}
+const SK="bnd-songdle-stats";
+let stats={streak:0,max:0,last:-1};
+try{const v=JSON.parse(localStorage.getItem(SK)||"null");if(v&&typeof v.streak==="number")stats=Object.assign(stats,v)}catch(e){}
+function saveStats(){try{localStorage.setItem(SK,JSON.stringify(stats))}catch(e){}}
+function curStreak(){return(stats.last===dayNum||stats.last===dayNum-1)?stats.streak:0}
+function recordResult(s){
+  if(stats.last===dayNum)return;
+  if(s==="win"){stats.streak=(stats.last===dayNum-1?stats.streak:0)+1;stats.max=Math.max(stats.max,stats.streak)}
+  else stats.streak=0;
+  stats.last=dayNum;saveStats();
+}
 
 function compare(g){
   const sameAlbum=g.a===ans.a;
@@ -61,13 +72,17 @@ function state(){
 function guess(id){
   if(state()!=="play"||guesses.includes(id))return;
   guesses.push(id);save();addRow(SG[id],true);$("q").value="";
-  setTimeout(update,state()==="play"?0:1900);
-  if(state()==="play")update();
+  const s=state();if(s!=="play")recordResult(s);
+  setTimeout(update,s==="play"?0:1900);
+  if(s==="play")update();
+}
 }
 function update(){
   const s=state();
   $("status").textContent=s==="play"?"Guess "+guesses.length+" of "+MAX:"";
   renderList();
+  $("streak").textContent=curStreak();
+  $("best").textContent=stats.max;
   if(s==="play"){$("search").style.display="block";$("end").style.display="none";return}
   $("search").style.display="none";$("end").style.display="block";
   $("eh").textContent=s==="win"?"🎉 Correct! Solved in "+guesses.length+"/"+MAX:"Game over";
