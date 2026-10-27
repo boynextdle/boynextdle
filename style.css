@@ -35,3 +35,5 @@ footer{margin-top:22px;text-align:center;color:var(--mut);font-size:12px}
 body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(8,8,12,.55),rgba(8,8,12,.82)),url("bg.jpg") center 35%/cover no-repeat}
 .btn+.btn{margin-left:8px}
 .btn.x{background:#000;border:1px solid #555}
+.btn+.btn{margin-left:8px}
+.btn.x{background:#000;border:1px solid #555}
