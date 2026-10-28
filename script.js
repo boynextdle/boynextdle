@@ -27,7 +27,6 @@ let guesses=[];
 try{const v=JSON.parse(localStorage.getItem(KEY)||"null");
   if(v&&Array.isArray(v.g))guesses=v.g.map(t=>SG.find(s=>s.t===t)).filter(Boolean).map(s=>s.id)}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify({g:guesses.map(i=>SG[i].t)}))}catch(e){}}
-function save(){try{localStorage.setItem(KEY,JSON.stringify({g:guesses}))}catch(e){}}
 const SK="bnd-songdle-stats";
 let stats={streak:0,max:0,last:-1};
 try{const v=JSON.parse(localStorage.getItem(SK)||"null");if(v&&typeof v.streak==="number")stats=Object.assign(stats,v)}catch(e){}
